@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:sorting_hat/constants.dart';
+import 'package:sorting_hat/screens/quiz/quiz_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -48,7 +52,9 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   const Spacer(), // 1/6
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(QuizScreen());
+                    },
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
