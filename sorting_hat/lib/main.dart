@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:sorting_hat/screens/welcome/welcome_screen.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class SortingHat extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Sorting Hat',
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
