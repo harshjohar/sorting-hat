@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
+import 'package:sorting_hat/controllers/auth_controller.dart';
 import 'package:sorting_hat/firebase_options.dart';
 import 'package:sorting_hat/router.dart';
+import 'package:sorting_hat/screens/quiz/quiz_screen.dart';
 import 'package:sorting_hat/screens/welcome/welcome_screen.dart';
 
 void main() async {
@@ -12,16 +14,33 @@ void main() async {
   runApp(const ProviderScope(child: SortingHat()));
 }
 
-class SortingHat extends StatelessWidget {
+class SortingHat extends ConsumerWidget {
   const SortingHat({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GetMaterialApp(
       title: 'Sorting Hat',
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: ref.watch(userProvider).when(data: (user) {
+        if (user == null) {
+          return const WelcomeScreen();
+        }
+        return const QuizScreen();
+      }, error: (error, trace) {
+        return Scaffold(
+          body: Center(
+            child: Text(error.toString()),
+          ),
+        );
+      }, loading: () {
+        return const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }),
       onGenerateRoute: (settings) => generateRoute(settings),
     );
   }

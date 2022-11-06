@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
                   const Spacer(), // 1/6
                   InkWell(
                     onTap: () {
-                      Get.to(() => const LoginScreen());
+                      Navigator.pushNamed(context, LoginScreen.routeName);
                     },
                     child: Container(
                       width: double.infinity,
