@@ -13,10 +13,10 @@ dependencies:
     sdk: flutter
   get: ^4.6.5
   flutter_svg: ^1.1.6
-  firebase_core: ^1.21.1
+  firebase_core: ^2.1.1
   flutter_riverpod: ^1.0.4
-  firebase_auth: ^3.7.0
-  cloud_firestore: ^3.4.6
+  firebase_auth: ^4.1.1
+  cloud_firestore: ^4.0.4
 
   cupertino_icons: ^1.0.2
 
