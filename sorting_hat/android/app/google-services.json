@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "849504237516",
+    "project_id": "sorting-hat-pec",
+    "storage_bucket": "sorting-hat-pec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849504237516:android:9507596ab76f42455a8f69",
+        "android_client_info": {
+          "package_name": "com.example.sorting_hat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849504237516-jasb5q0ce2i2ic2abqdl830u171thjvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7aB6UEqApQYjtoqiJB-UEHqhX0OJWXZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849504237516-jasb5q0ce2i2ic2abqdl830u171thjvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

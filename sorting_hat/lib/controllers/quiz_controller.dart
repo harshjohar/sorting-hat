@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sorting_hat/models/question.dart';
 import 'package:sorting_hat/screens/result/result_screen.dart';
 
+// rewrite this logic in riverpod
 class QuestionController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late AnimationController _animationController;
