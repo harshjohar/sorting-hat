@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sorting_hat/constants.dart';
-import 'package:sorting_hat/screens/quiz/quiz_screen.dart';
+import 'package:sorting_hat/screens/auth/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
                   const Spacer(), // 1/6
                   InkWell(
                     onTap: () {
-                      Get.to(QuizScreen());
+                      Get.to(() => const LoginScreen());
                     },
                     child: Container(
                       width: double.infinity,
