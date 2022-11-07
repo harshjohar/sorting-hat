@@ -38,8 +38,8 @@ class QuestionController extends GetxController
 
   @override
   void onInit() {
-    _animationController =
-        AnimationController(duration: const Duration(seconds: 60), vsync: this);
+    _animationController = AnimationController(
+        duration: const Duration(seconds: 3600), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         update();
@@ -66,8 +66,7 @@ class QuestionController extends GetxController
 
       _animationController.forward().whenComplete(nextQuestion);
     } else {
-      // Get package provide us simple way to naviigate another page
-      Get.to(const ResultScreen());
+      Get.offAll(() => const ResultScreen());
     }
   }
 
@@ -76,8 +75,10 @@ class QuestionController extends GetxController
     _selectedAns = selectedIndex;
 
     _answers[_questionNumber.value - 1] = _selectedAns;
+    debugPrint(_answers.toString());
     _animationController.stop();
     update();
+    nextQuestion();
   }
 
   void updateTheQnNum(int index) {

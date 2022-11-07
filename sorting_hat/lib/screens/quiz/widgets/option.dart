@@ -21,18 +21,11 @@ class Option extends StatelessWidget {
         builder: (qnController) {
           Color getTheRightColor() {
             if (qnController.isAnswered) {
-              if (index == 1) {
-                return kGreenColor;
-              } else if (index == qnController.selectedAns &&
-                  qnController.selectedAns != 1) {
+              if (index == qnController.selectedAns) {
                 return kRedColor;
               }
             }
             return kGrayColor;
-          }
-
-          IconData getTheRightIcon() {
-            return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
           }
 
           return InkWell(
@@ -51,20 +44,6 @@ class Option extends StatelessWidget {
                     "${index + 1}. $text",
                     style: TextStyle(color: getTheRightColor(), fontSize: 16),
                   ),
-                  Container(
-                    height: 26,
-                    width: 26,
-                    decoration: BoxDecoration(
-                      color: getTheRightColor() == kGrayColor
-                          ? Colors.transparent
-                          : getTheRightColor(),
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(color: getTheRightColor()),
-                    ),
-                    child: getTheRightColor() == kGrayColor
-                        ? null
-                        : Icon(getTheRightIcon(), size: 16),
-                  )
                 ],
               ),
             ),

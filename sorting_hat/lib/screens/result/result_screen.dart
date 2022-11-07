@@ -1,20 +1,28 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sorting_hat/constants.dart';
-import 'package:sorting_hat/controllers/quiz_controller.dart';
+import 'package:sorting_hat/screens/developers/developers_screen.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    QuestionController _qnController = Get.put(QuestionController());
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
-          SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          Positioned(
+            top: 30,
+            right: 0,
+            child: CupertinoButton(
+              child: const Text("Meet the developers"),
+              onPressed: () {
+                Get.to(() => const DevelopersScreen());
+              },
+            ),
+          ),
           Column(
             children: [
               const Spacer(flex: 3),
