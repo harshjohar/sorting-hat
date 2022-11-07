@@ -27,7 +27,7 @@ class QuestionController extends GetxController
   bool _isAnswered = false;
   bool get isAnswered => _isAnswered;
 
-  int _selectedAns = 69;
+  int _selectedAns = 0;
   int get selectedAns => _selectedAns;
 
   final RxInt _questionNumber = 1.obs;
@@ -39,7 +39,7 @@ class QuestionController extends GetxController
   @override
   void onInit() {
     _animationController = AnimationController(
-        duration: const Duration(seconds: 3600), vsync: this);
+        duration: const Duration(seconds: 120), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         update();
@@ -79,6 +79,7 @@ class QuestionController extends GetxController
     _animationController.stop();
     update();
     nextQuestion();
+    debugPrint(_answers.toString());
   }
 
   void updateTheQnNum(int index) {
