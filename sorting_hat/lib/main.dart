@@ -6,6 +6,7 @@ import 'package:sorting_hat/controllers/auth_controller.dart';
 import 'package:sorting_hat/firebase_options.dart';
 import 'package:sorting_hat/router.dart';
 import 'package:sorting_hat/screens/quiz/quiz_screen.dart';
+import 'package:sorting_hat/screens/result/result_screen.dart';
 import 'package:sorting_hat/screens/welcome/welcome_screen.dart';
 
 void main() async {
@@ -26,6 +27,9 @@ class SortingHat extends ConsumerWidget {
       home: ref.watch(userProvider).when(data: (user) {
         if (user == null) {
           return const WelcomeScreen();
+        }
+        if (user.house!.isNotEmpty) {
+          return const ResultScreen();
         }
         return const QuizScreen();
       }, error: (error, trace) {

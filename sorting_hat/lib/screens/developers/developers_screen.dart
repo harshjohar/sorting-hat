@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DevelopersScreen extends StatelessWidget {
   const DevelopersScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Know your developers")),
+      appBar: AppBar(title: const Text("Know the developers")),
       body: Column(
         children: const [
           Padding(
@@ -66,7 +66,9 @@ class DeveloperTile extends StatelessWidget {
           name,
         ),
         trailing: CupertinoButton(
-          onPressed: () {},
+          onPressed: () {
+            launchUrl(Uri.parse(social));
+          },
           child: Image.network(
             "https://cdn-icons-png.flaticon.com/512/174/174857.png",
             height: 25,

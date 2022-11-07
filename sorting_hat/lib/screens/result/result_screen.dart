@@ -14,7 +14,7 @@ class ResultScreen extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Positioned(
-            top: 30,
+            top: 50,
             right: 0,
             child: CupertinoButton(
               child: const Text("Meet the developers"),
