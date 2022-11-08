@@ -1,6 +1,10 @@
+import 'dart:convert' as convert;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sorting_hat/models/question.dart';
+import 'package:sorting_hat/screens/loading/loading_screen.dart';
+import 'package:http/http.dart' as http;
 import 'package:sorting_hat/screens/result/result_screen.dart';
 
 // rewrite this logic in riverpod
@@ -66,8 +70,21 @@ class QuestionController extends GetxController
 
       _animationController.forward().whenComplete(nextQuestion);
     } else {
-      Get.offAll(() => const ResultScreen());
+      Get.offAll(() => const LoadingScreen());
     }
+  }
+
+  Future<String> apiCall() async {
+    final response = await http
+        .post(Uri.parse("https://sorting-hat-pec.herokuapp.com/api"), body: {
+      "exp": [_answers]
+    });
+    final house = convert.jsonDecode(response.body) as String;
+    return house;
+  }
+
+  Future<void> addToFirebase() async {
+    // TODO
   }
 
   void saveAns(Question question, int selectedIndex) {

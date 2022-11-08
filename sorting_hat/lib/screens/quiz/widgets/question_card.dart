@@ -57,7 +57,8 @@ class _QuestionCardState extends State<QuestionCard> {
             alignment: Alignment.center,
             child: Text(
               emojis[value.ceil() + 3],
-              style: const TextStyle(fontSize: 150),
+              style: const TextStyle(fontSize: 80),
+              textAlign: TextAlign.center,
             ),
           ),
           Text(
