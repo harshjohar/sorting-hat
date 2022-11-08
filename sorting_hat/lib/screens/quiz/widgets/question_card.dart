@@ -67,11 +67,9 @@ class _QuestionCardState extends State<QuestionCard> {
           SfSlider(
               min: -3.0,
               max: 3.0,
-              enableTooltip: true,
               value: value,
               interval: 1,
               showTicks: true,
-              showLabels: true,
               stepSize: 1,
               activeColor: Colors.red,
               minorTicksPerInterval: 1,

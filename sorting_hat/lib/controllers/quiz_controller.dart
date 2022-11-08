@@ -33,7 +33,7 @@ class QuestionController extends GetxController
   final RxInt _questionNumber = 1.obs;
   RxInt get questionNumber => _questionNumber;
 
-  final List<int> _answers = List.filled(15, 69);
+  final List<int> _answers = List.filled(15, 0);
   List<int> get answers => _answers;
 
   @override
