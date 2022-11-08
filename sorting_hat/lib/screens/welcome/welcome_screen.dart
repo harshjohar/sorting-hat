@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/screens/auth/login_screen.dart';
 
@@ -23,7 +22,8 @@ class WelcomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline4?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  const Text("Enter your details below"),
+                  const Text(
+                      "(Local pr pada hai design, final krke hi push krunga dw abt this screen)"),
                   const Spacer(), // 1/6
                   InkWell(
                     onTap: () {
