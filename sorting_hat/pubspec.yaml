@@ -23,6 +23,7 @@ dependencies:
   url_launcher: ^6.1.6
   flutter_native_splash: ^2.2.14
   gif: ^2.2.0
+  flutter_otp_text_field: ^1.1.0+2
 
 
 dev_dependencies:

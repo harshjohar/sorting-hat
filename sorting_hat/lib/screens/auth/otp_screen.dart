@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/controllers/auth_controller.dart';
+import 'package:sorting_hat/widgets/custom_text_button.dart';
 
 class OTPScreen extends ConsumerStatefulWidget {
   const OTPScreen({Key? key, required this.verificationId}) : super(key: key);
@@ -30,38 +33,88 @@ class _OTPScreenState extends ConsumerState<OTPScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    TextStyle? createStyle(Color color) {
+      ThemeData theme = Theme.of(context);
+      return theme.textTheme.headline5?.copyWith(color: color);
+    }
+
+    List<TextStyle?> otpTextStyles = [
+      createStyle(kYellowColor),
+      createStyle(kYellowColor),
+      createStyle(kYellowColor),
+      createStyle(kYellowColor),
+      createStyle(kYellowColor),
+      createStyle(kYellowColor),
+    ];
+
+    ThemeData theme = Theme.of(context);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Verifying the number"),
+        body: Stack(
+      children: [
+        Container(
+          color: kGreenColor,
+          height: double.infinity,
+          width: double.infinity,
         ),
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Text("Just get the otp already mf!"),
-              SizedBox(
-                width: size.width * 0.5,
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  controller: otpController,
-                  textAlign: TextAlign.center,
-                  decoration: const InputDecoration(
-                    hintText: "- - - - - -",
-                    hintStyle: TextStyle(fontSize: 30),
-                  ),
-                  onChanged: (val) {
-                    if (val.length == 6) {
-                      verifyOTP(context, widget.verificationId, val.trim());
+        SafeArea(
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Verification Code",
+                  style: theme.textTheme.headline4,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  "We texted you a code",
+                  style: theme.textTheme.headline6,
+                ),
+                const Spacer(flex: 2),
+                OtpTextField(
+                  numberOfFields: 6,
+                  styles: otpTextStyles,
+                  borderColor: kYellowColor,
+                  focusedBorderColor: kYellowColor,
+                  cursorColor: kYellowColor,
+                  // styles: otpTextStyles,
+                  showFieldAsBox: true,
+                  borderWidth: 2.0,
+                  //runs when a code is typed in
+                  onCodeChanged: (String code) {
+                    if (code.length == 6) {
+                      verifyOTP(context, widget.verificationId, code.trim());
                     }
                   },
+                  //runs when every textfield is filled
+                  onSubmit: (String verificationCode) {
+                    verifyOTP(context, widget.verificationId,
+                        verificationCode.trim());
+                  },
                 ),
-              ),
-            ],
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "This helps us verify every user in our app",
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodyText1,
+                    ),
+                  ),
+                ),
+                const Spacer(flex: 3),
+                CustomTextButton(
+                  fn: () {},
+                  text: "Confirm",
+                ),
+              ],
+            ),
           ),
-        ));
+        ),
+      ],
+    ));
   }
 }
