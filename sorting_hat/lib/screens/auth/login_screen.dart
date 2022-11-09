@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/controllers/auth_controller.dart';
 import 'package:sorting_hat/screens/common/error_screen.dart';
+import 'package:sorting_hat/widgets/custom_text_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -39,53 +40,54 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login"),
-        backgroundColor: kBlackColor,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'Big Moni will need to verify your phone number.',
-                style: TextStyle(fontSize: 24),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          Container(
+            color: kGreenColor,
+            height: double.infinity,
+            width: double.infinity,
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('+91'),
-                  const SizedBox(width: 10),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: TextField(
-                      controller: phoneController,
-                      decoration: const InputDecoration(
-                        hintText: 'phone number',
+                  const Text(
+                    'We need to verify your phone number.',
+                    style: TextStyle(fontSize: 24),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('+91'),
+                      const SizedBox(width: 10),
+                      SizedBox(
+                        width: size.width * 0.7,
+                        child: TextField(
+                          controller: phoneController,
+                          decoration: const InputDecoration(
+                            hintText: 'phone number',
+                          ),
+                          keyboardType: TextInputType.phone,
+                        ),
                       ),
-                      keyboardType: TextInputType.phone,
+                    ],
+                  ),
+                  const Spacer(),
+                  SizedBox(
+                    child: CustomTextButton(
+                      fn: sendPhoneNumber,
+                      text: "NEXT",
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: size.height * 0.6),
-              SizedBox(
-                width: 90,
-                child: ElevatedButton(
-                  onPressed: sendPhoneNumber,
-                  child: const Text(
-                    "NEXT",
-                    style: TextStyle(color: kGrayColor),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
