@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/controllers/quiz_controller.dart';
 import 'package:sorting_hat/models/question.dart';
+import 'package:sorting_hat/widgets/custom_text_button.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class QuestionCard extends StatefulWidget {
@@ -35,11 +35,15 @@ class _QuestionCardState extends State<QuestionCard> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     QuestionController controller = Get.put(QuestionController());
+    void saveAns() {
+      controller.saveAns(widget.question, value.ceil());
+    }
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       padding: const EdgeInsets.all(kDefaultPadding),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: kLightGreenColor,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
@@ -49,7 +53,7 @@ class _QuestionCardState extends State<QuestionCard> {
             style: Theme.of(context)
                 .textTheme
                 .headline6
-                ?.copyWith(color: kBlackColor),
+                ?.copyWith(color: Colors.white),
           ),
           const SizedBox(height: kDefaultPadding / 2),
           Container(
@@ -63,7 +67,7 @@ class _QuestionCardState extends State<QuestionCard> {
           ),
           Text(
             reaction[value.ceil() + 3],
-            style: const TextStyle(color: Colors.black, fontSize: 20),
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
           SfSlider(
               min: -3.0,
@@ -72,18 +76,15 @@ class _QuestionCardState extends State<QuestionCard> {
               interval: 1,
               showTicks: true,
               stepSize: 1,
-              activeColor: Colors.red,
-              minorTicksPerInterval: 1,
+              activeColor: kYellowColor,
+              // minorTicksPerInterval: ,
               onChanged: (dynamic v) {
                 setState(() {
                   value = v;
                 });
               }),
-          CupertinoButton.filled(
-              child: const Text("NEXT"),
-              onPressed: () {
-                controller.saveAns(widget.question, value.ceil());
-              }),
+          const Spacer(),
+          CustomTextButton(text: "Next", fn: saveAns),
         ],
       ),
     );

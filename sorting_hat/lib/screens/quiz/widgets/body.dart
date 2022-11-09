@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/controllers/quiz_controller.dart';
@@ -17,7 +16,11 @@ class Body extends StatelessWidget {
     QuestionController questionController = Get.put(QuestionController());
     return Stack(
       children: [
-        // SvgPicture.asset("assets/bg.svg", fit: BoxFit.fill),
+        Container(
+          color: kGreenColor,
+          height: double.infinity,
+          width: double.infinity,
+        ),
         SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,14 +41,14 @@ class Body extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .headline4
-                          ?.copyWith(color: kSecondaryColor),
+                          ?.copyWith(color: ktextHeadingColor),
                       children: [
                         TextSpan(
                           text: "/${questionController.questions.length}",
                           style: Theme.of(context)
                               .textTheme
                               .headline5
-                              ?.copyWith(color: kSecondaryColor),
+                              ?.copyWith(color: ktextHeadingColor),
                         ),
                       ],
                     ),
