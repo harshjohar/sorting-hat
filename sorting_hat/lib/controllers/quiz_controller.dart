@@ -1,6 +1,8 @@
 import 'dart:convert' as convert;
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -82,16 +84,20 @@ class QuestionController extends GetxController
     final response =
         await http.post(Uri.parse("https://sorting-hat-pec.herokuapp.com/api"),
             body: json.encode({
-              "exp": [
-                [2, 2, 3, 4, 2, 1, 1, 2, 3, 4, 1, 2, 2, 1, 2]
-              ]
+              "exp": [_answers]
             }));
     final house = convert.jsonDecode(response.body) as String;
+    await addToFirebase(house);
     return house;
   }
 
-  Future<void> addToFirebase() async {
-    // TODO
+  Future<void> addToFirebase(String house) async {
+    final firestore = FirebaseFirestore.instance;
+    final auth = FirebaseAuth.instance;
+    await firestore.collection("users").doc(auth.currentUser?.uid).set(
+      {"house": house},
+      SetOptions(merge: true),
+    );
   }
 
   void saveAns(Question question, int selectedIndex) {
