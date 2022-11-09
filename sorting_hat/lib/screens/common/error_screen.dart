@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sorting_hat/constants.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String error;
@@ -17,7 +18,11 @@ class ErrorScreen extends StatelessWidget {
 void showSnackBar({required BuildContext context, required String content}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text(content),
+      content: Text(
+        content,
+        style: const TextStyle(color: Colors.white),
+      ),
+      backgroundColor: kLightGreenColor,
     ),
   );
 }

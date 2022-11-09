@@ -21,7 +21,7 @@ class QuestionCard extends StatefulWidget {
 
 class _QuestionCardState extends State<QuestionCard> {
   double value = 0;
-  final emojis = ['🥲', '😥', '🙃', '😐', '🙂', '😃', '🤩'];
+  final emojis = ['😥', '🥲', '🙃', '😐', '🙂', '😃', '🤩'];
   final reaction = [
     'Strongly Disagree',
     'Disagree',
