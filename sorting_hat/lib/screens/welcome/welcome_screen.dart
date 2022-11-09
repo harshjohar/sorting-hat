@@ -46,8 +46,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 children: [
                   Center(
                     child: Gif(
+                      placeholder: (context) {
+                        return const SizedBox(
+                          height: 390,
+                          width: 380,
+                        );
+                      },
                       autostart: Autostart.once,
-                      image: const AssetImage('assets/welcome.gif'),
+                      image: const AssetImage(
+                        'assets/welcome.gif',
+                      ),
                     ),
                   ),
                   button
