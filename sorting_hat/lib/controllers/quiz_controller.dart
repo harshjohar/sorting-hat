@@ -75,7 +75,7 @@ class QuestionController extends GetxController
     } else {
       Get.offAll(() => const LoadingScreen());
       String result = await apiCall();
-      Get.offAll(() => ResultScreen(house: result));
+      Get.offAll(() => const ResultScreen());
     }
   }
 
