@@ -22,7 +22,20 @@ class SortingHat extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GetMaterialApp(
       title: 'Sorting Hat',
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        inputDecorationTheme: const InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 3,
+              color: Colors.greenAccent,
+              style: BorderStyle.none,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(width: 1, color: Colors.amberAccent),
+          ),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: ref.watch(userProvider).when(data: (user) {
         if (user == null) {

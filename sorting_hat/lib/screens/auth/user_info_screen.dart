@@ -65,6 +65,8 @@ class _UserInformationScreenState extends ConsumerState<UserInformationScreen> {
                   width: size.width * 0.85,
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    cursorColor: kYellowColor,
+                    autofocus: true,
                     controller: _nameController,
                     decoration: const InputDecoration(hintText: "Alex Phal"),
                   ),
