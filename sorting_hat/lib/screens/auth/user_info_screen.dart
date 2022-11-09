@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/controllers/auth_controller.dart';
+import 'package:sorting_hat/widgets/custom_text_button.dart';
 
 class UserInformationScreen extends ConsumerStatefulWidget {
   const UserInformationScreen({Key? key}) : super(key: key);
@@ -34,31 +36,46 @@ class _UserInformationScreenState extends ConsumerState<UserInformationScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
     return Scaffold(
-      body: SafeArea(
-          child: Column(
+      body: Stack(
         children: [
-          Row(
-            children: [
-              Container(
-                width: size.width * 0.85,
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  controller: _nameController,
-                  decoration:
-                      const InputDecoration(hintText: "Enter your name Bitch!"),
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  saveUserData();
-                },
-                icon: const Icon(Icons.done),
-              ),
-            ],
+          Container(
+            color: kGreenColor,
+            height: double.infinity,
+            width: double.infinity,
           ),
+          SafeArea(
+              child: Center(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "User Information",
+                  style: theme.textTheme.headline4,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  "Please enter your name",
+                  style: theme.textTheme.headline6,
+                ),
+                Container(
+                  width: size.width * 0.85,
+                  padding: const EdgeInsets.all(10),
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(hintText: "Alex Phal"),
+                  ),
+                ),
+                const Spacer(),
+                CustomTextButton(text: "Submit", fn: saveUserData),
+              ],
+            ),
+          )),
         ],
-      )),
+      ),
     );
   }
 }
