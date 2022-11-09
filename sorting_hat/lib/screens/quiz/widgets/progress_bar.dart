@@ -40,13 +40,12 @@ class ProgressBar extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: kDefaultPadding / 2),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "${(controller.animation.value * 60).round()} sec",
-                        style: const TextStyle(color: kBlackColor),
+                      SvgPicture.asset(
+                        "assets/clock.svg",
+                        color: Colors.white,
                       ),
-                      SvgPicture.asset("assets/clock.svg"),
                     ],
                   ),
                 ),
