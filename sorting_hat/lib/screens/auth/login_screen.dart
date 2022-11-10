@@ -74,6 +74,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             hintText: 'phone number',
                           ),
                           keyboardType: TextInputType.phone,
+                          onSubmitted: ((_) => sendPhoneNumber()),
                         ),
                       ),
                     ],

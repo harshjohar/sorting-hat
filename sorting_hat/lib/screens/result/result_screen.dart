@@ -64,14 +64,18 @@ class ResultScreen extends ConsumerWidget {
                         height: 100,
                         width: 100,
                       ),
-                      const Spacer(flex: 6),
-                      Text(
-                        user.name,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontSize: 60, fontWeight: FontWeight.bold),
+                      const Spacer(flex: 4),
+                      FittedBox(
+                        child: Text(
+                          user.name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontSize: 60, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -83,7 +87,8 @@ class ResultScreen extends ConsumerWidget {
                       const Spacer(),
                       OutlinedButton(
                         onPressed: () {
-                          launchUrl(Uri.parse("https://www.wizardingworld.com/features/hogwarts-house-meanings"));
+                          launchUrl(Uri.parse(
+                              "https://www.wizardingworld.com/features/hogwarts-house-meanings"));
                         },
                         child: const Text(
                           "View your house",

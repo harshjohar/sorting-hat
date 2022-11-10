@@ -76,6 +76,7 @@ class _OTPScreenState extends ConsumerState<OTPScreen> {
                 const Spacer(flex: 2),
                 OtpTextField(
                   numberOfFields: 6,
+                  autoFocus: true,
                   styles: otpTextStyles,
                   borderColor: kYellowColor,
                   focusedBorderColor: kYellowColor,
