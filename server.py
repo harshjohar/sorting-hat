@@ -33,15 +33,18 @@ def predict():
         new_index = arr.index(max_value)
         classMap = {0: 'G', 1: 'H', 2: 'R', 3: 'S'}
         output = classMap[new_index]
-
-    return jsonify(output)
+    response = jsonify(output)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @app.route('/api/lr',methods=['GET', 'POST'])
 def predictWithLR():
     data = request.get_json(force=True)
     prediction = lrModel.predict(np.array(data['exp']))
     output = prediction[0]
-    return jsonify(output)
+    response = jsonify(output)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
