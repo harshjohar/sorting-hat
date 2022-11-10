@@ -20,6 +20,12 @@ class DevelopersScreen extends StatelessWidget {
             photo:
                 "https://media-exp1.licdn.com/dms/image/C4D03AQEo1BSVMZ-PWg/profile-displayphoto-shrink_800_800/0/1642917136421?e=1673481600&v=beta&t=9-UBCpEEgDMXgbPX725I0-WgCbmyF3kkG6sDn46OnFE",
           ),
+          DeveloperTile(
+              name: "Aryan Raj Vaidya",
+              photo:
+                  "https://media-exp1.licdn.com/dms/image/C4D03AQHDhd3pM3r8bA/profile-displayphoto-shrink_400_400/0/1656310689957?e=1673481600&v=beta&t=C8jRJmugTDMZSEMheOU70t-KlHSNYA701KGbQ4Hn-94",
+              social:
+                  "https://www.linkedin.com/in/aryan-raj-vaidya-80bb34212/"),
           Padding(
             padding: EdgeInsets.all(12.0),
             child: Text("ML Engineers"),

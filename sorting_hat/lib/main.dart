@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:sorting_hat/controllers/auth_controller.dart';
 import 'package:sorting_hat/firebase_options.dart';
 import 'package:sorting_hat/router.dart';
+import 'package:sorting_hat/screens/loading/loading_screen.dart';
 import 'package:sorting_hat/screens/quiz/quiz_screen.dart';
 import 'package:sorting_hat/screens/result/result_screen.dart';
 import 'package:sorting_hat/screens/welcome/welcome_screen.dart';
@@ -52,11 +53,7 @@ class SortingHat extends ConsumerWidget {
           ),
         );
       }, loading: () {
-        return const Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
+        return const LoadingScreen();
       }),
       onGenerateRoute: (settings) => generateRoute(settings),
     );

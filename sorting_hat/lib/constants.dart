@@ -17,15 +17,53 @@ const kPrimaryGradient = LinearGradient(
 
 const double kDefaultPadding = 20.0;
 
+const houseData = {
+  "G": ["experience-oriented", "honest, blunt", "passionate playful"],
+  "H": ["hard-working", "determined", "open-minded"],
+  "S": ["ambitious", "self-reliant", "perfectionistic"],
+  "R": ["intelligent", "introspective", "inquistive"],
+};
 
-// G
-
-
-// H
-
-
-// R
-
-
-// S
-
+// Houses
+// Gryffindor
+// - experience-oriented 
+// - honest
+// - practical
+// - blunt,
+// - passionate playful
+// - funny 
+// - prone to living in the moment and not taking themselves seriously 
+// - trusting
+// - idealistic 
+// - stubborn
+// - loath to back down
+// - prone to procrastination,
+// - wary of manipulators and liars.
+// Hufflepuff 
+// - hard-working
+// - determined,
+// - tenacious, 
+// - loyal,
+// - honest, 
+// - genuine, 
+// - well-rounded, fair and just,
+// - open-minded, giving, good-hearted, accepting,
+// - compassionate, passionate, practical, patient,
+// - dependable.
+// Ravenclaw
+// - analytical, intelligent, logical yet impractical
+// - (absent-minded professor type), curious,
+// - inquisitive, creative, witty, wise, observers
+// - more often than participants, interested in
+// - understanding things, resigned cynics,
+// - fond of intellectual discussion, introspective,
+// - independent, self-entertaining, fond of learning
+// - for the sake of learning.
+// Slytherin ❤️
+// - ambitious, driven, focused on goals,
+// - determined, prepared, subtle, perfectionistic,
+// - adaptable, realistic, big on cost/ benefit
+// - analysis, self-reliant, charming, bold and
+// - assertive, ruthless and able to separate their idea
+// - of themselves from what they do, able to use
+// - their intelligence as a tool to achieve the goals.

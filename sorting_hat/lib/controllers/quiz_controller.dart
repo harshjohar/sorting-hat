@@ -1,10 +1,13 @@
 import 'dart:convert' as convert;
+import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:sorting_hat/models/question.dart';
 import 'package:sorting_hat/screens/loading/loading_screen.dart';
-import 'package:http/http.dart' as http;
 import 'package:sorting_hat/screens/result/result_screen.dart';
 
 // rewrite this logic in riverpod
@@ -44,7 +47,7 @@ class QuestionController extends GetxController
   void onInit() {
     _animationController = AnimationController(
         duration: const Duration(seconds: 120), vsync: this);
-    _animation = Tween<double>(begin: 1, end: 0).animate(_animationController)
+    _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         update();
       });
@@ -61,7 +64,7 @@ class QuestionController extends GetxController
     _pageController.dispose();
   }
 
-  void nextQuestion() {
+  void nextQuestion() async {
     if (_questionNumber.value != _questions.length) {
       _isAnswered = false;
       _pageController.nextPage(
@@ -71,20 +74,30 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(nextQuestion);
     } else {
       Get.offAll(() => const LoadingScreen());
+      String result = await apiCall();
+      Get.offAll(() => const ResultScreen());
     }
   }
 
   Future<String> apiCall() async {
-    final response = await http
-        .post(Uri.parse("https://sorting-hat-pec.herokuapp.com/api"), body: {
-      "exp": [_answers]
-    });
+    String data = [_answers].toString();
+    final response =
+        await http.post(Uri.parse("https://sorting-hat-pec.herokuapp.com/api"),
+            body: json.encode({
+              "exp": [_answers]
+            }));
     final house = convert.jsonDecode(response.body) as String;
+    await addToFirebase(house);
     return house;
   }
 
-  Future<void> addToFirebase() async {
-    // TODO
+  Future<void> addToFirebase(String house) async {
+    final firestore = FirebaseFirestore.instance;
+    final auth = FirebaseAuth.instance;
+    await firestore.collection("users").doc(auth.currentUser?.uid).set(
+      {"house": house},
+      SetOptions(merge: true),
+    );
   }
 
   void saveAns(Question question, int selectedIndex) {

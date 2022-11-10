@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,6 +43,15 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCwZ0DDkcbTSkri4UTB79j3bNzn6gGXThM',
+    appId: '1:849504237516:web:57ca8276ae2cf81a5a8f69',
+    messagingSenderId: '849504237516',
+    projectId: 'sorting-hat-pec',
+    authDomain: 'sorting-hat-pec.firebaseapp.com',
+    storageBucket: 'sorting-hat-pec.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA7aB6UEqApQYjtoqiJB-UEHqhX0OJWXZ4',
     appId: '1:849504237516:android:9507596ab76f42455a8f69',
@@ -63,7 +66,23 @@ class DefaultFirebaseOptions {
     messagingSenderId: '849504237516',
     projectId: 'sorting-hat-pec',
     storageBucket: 'sorting-hat-pec.appspot.com',
-    iosClientId: '849504237516-iko35b0o28hcartaa6sqkv8dnnphbgl6.apps.googleusercontent.com',
+    androidClientId:
+        '849504237516-qo4og2ee89d74pr43hf6f87avnh072os.apps.googleusercontent.com',
+    iosClientId:
+        '849504237516-iko35b0o28hcartaa6sqkv8dnnphbgl6.apps.googleusercontent.com',
+    iosBundleId: 'com.example.sortingHat',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyC4qkrZ5Z3wFZg5ZXThbWyJdrstXaTLJx0',
+    appId: '1:849504237516:ios:1c88d6454ce9f4975a8f69',
+    messagingSenderId: '849504237516',
+    projectId: 'sorting-hat-pec',
+    storageBucket: 'sorting-hat-pec.appspot.com',
+    androidClientId:
+        '849504237516-qo4og2ee89d74pr43hf6f87avnh072os.apps.googleusercontent.com',
+    iosClientId:
+        '849504237516-iko35b0o28hcartaa6sqkv8dnnphbgl6.apps.googleusercontent.com',
     iosBundleId: 'com.example.sortingHat',
   );
 }
