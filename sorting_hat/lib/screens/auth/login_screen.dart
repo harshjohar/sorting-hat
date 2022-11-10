@@ -14,7 +14,7 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final phoneController = TextEditingController();
-
+  bool buttonEnabled = true;
   @override
   void dispose() {
     super.dispose();
@@ -28,6 +28,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             context,
             '+91$phoneNumber',
           );
+      buttonEnabled = false;
     } else {
       showSnackBar(
         context: context,
@@ -84,6 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: CustomTextButton(
                       fn: sendPhoneNumber,
                       text: "NEXT",
+                      enabled: buttonEnabled,
                     ),
                   ),
                 ],

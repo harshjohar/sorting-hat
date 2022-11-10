@@ -39,6 +39,7 @@ flutter:
     - assets/
     - assets/Houses/
     - assets/icon/
+    - assets/Reactions/
   # fonts:
   #   - family: Schyler
   #     fonts:

@@ -3,7 +3,9 @@ import 'package:sorting_hat/constants.dart';
 import 'package:sorting_hat/widgets/touchable_opacity.dart';
 
 class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({super.key, required this.text, required this.fn});
+  bool enabled;
+  CustomTextButton(
+      {super.key, required this.text, required this.fn, this.enabled = true});
   final String text;
   final VoidCallback fn;
 

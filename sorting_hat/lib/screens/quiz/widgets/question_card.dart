@@ -31,6 +31,7 @@ class _QuestionCardState extends State<QuestionCard> {
     'Agree',
     'Strongly Agree'
   ];
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -57,14 +58,13 @@ class _QuestionCardState extends State<QuestionCard> {
           ),
           const SizedBox(height: kDefaultPadding / 2),
           Container(
-            height: size.height * 0.35,
-            alignment: Alignment.center,
-            child: Text(
-              emojis[value.ceil() + 3],
-              style: const TextStyle(fontSize: 80),
-              textAlign: TextAlign.center,
-            ),
-          ),
+              height: size.height * 0.35,
+              alignment: Alignment.center,
+              child: Image.asset(
+                "assets/Reactions/${value.ceil()}.png",
+                width: 250,
+                height: 250,
+              )),
           Text(
             reaction[value.ceil() + 3],
             style: const TextStyle(color: Colors.white, fontSize: 20),
