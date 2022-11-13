@@ -58,7 +58,7 @@ class _QuestionCardState extends State<QuestionCard> {
           ),
           const SizedBox(height: kDefaultPadding / 2),
           Container(
-              height: size.height * 0.35,
+              height: size.height * 0.25,
               alignment: Alignment.center,
               child: Image.asset(
                 "assets/Reactions/${value.ceil()}.png",
@@ -69,6 +69,7 @@ class _QuestionCardState extends State<QuestionCard> {
             reaction[value.ceil() + 3],
             style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
+          const Spacer(),
           SfSlider(
               min: -3.0,
               max: 3.0,
@@ -85,6 +86,7 @@ class _QuestionCardState extends State<QuestionCard> {
               }),
           const Spacer(),
           CustomTextButton(text: "Next", fn: saveAns),
+          const Spacer(),
         ],
       ),
     );
